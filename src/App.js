@@ -41,6 +41,7 @@ const App = () => {
                 <CanvasDraw 
                 hideGrid={true} 
                 hideInterface={true} 
+                brushRadius= {5}
                 canvasWidth= 'min(400px,90vw)'
                 ref = {canvasRef}
                 />
