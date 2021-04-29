@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/bangla-digit-react-app/static/js/main.9919250f.chunk.js",
-    "main.js.map": "/bangla-digit-react-app/static/js/main.9919250f.chunk.js.map",
+    "main.js": "/bangla-digit-react-app/static/js/main.9ad358c7.chunk.js",
+    "main.js.map": "/bangla-digit-react-app/static/js/main.9ad358c7.chunk.js.map",
     "runtime-main.js": "/bangla-digit-react-app/static/js/runtime-main.c3040994.js",
     "runtime-main.js.map": "/bangla-digit-react-app/static/js/runtime-main.c3040994.js.map",
-    "static/js/2.2f8dc672.chunk.js": "/bangla-digit-react-app/static/js/2.2f8dc672.chunk.js",
-    "static/js/2.2f8dc672.chunk.js.map": "/bangla-digit-react-app/static/js/2.2f8dc672.chunk.js.map",
+    "static/js/2.ca6492de.chunk.js": "/bangla-digit-react-app/static/js/2.ca6492de.chunk.js",
+    "static/js/2.ca6492de.chunk.js.map": "/bangla-digit-react-app/static/js/2.ca6492de.chunk.js.map",
     "index.html": "/bangla-digit-react-app/index.html",
-    "static/js/2.2f8dc672.chunk.js.LICENSE.txt": "/bangla-digit-react-app/static/js/2.2f8dc672.chunk.js.LICENSE.txt"
+    "static/js/2.ca6492de.chunk.js.LICENSE.txt": "/bangla-digit-react-app/static/js/2.ca6492de.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c3040994.js",
-    "static/js/2.2f8dc672.chunk.js",
-    "static/js/main.9919250f.chunk.js"
+    "static/js/2.ca6492de.chunk.js",
+    "static/js/main.9ad358c7.chunk.js"
   ]
 }
