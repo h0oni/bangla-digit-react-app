@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import useStyles from './styles'
 import CanvasDraw from "react-canvas-draw";
 import { motion } from "framer-motion"
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const App = () => {
     const classes = useStyles();
@@ -9,14 +10,27 @@ const App = () => {
     const [pred, setPred] = useState({hello:'--'})
     function predictionButton() {
         const image = canvasRef.current.canvasContainer.childNodes[1].toDataURL()
-        fetchpred(image)
+        fetchPred(image)
     }
 
     function clearButton() {
         canvasRef.current.clear()
     }
 
-    const fetchpred = async (image) => {
+    const loadServer = async () => {
+        try {
+            // const fetchResponse = await fetch('http://127.0.0.1:8000/predict/', settings);
+            const fetchResponse = await fetch('https://bangladigitfastapi.herokuapp.com/');
+            const pred = await fetchResponse.json();
+            return pred.hello
+        } catch (e) {
+            return e;
+        }    
+    
+    }
+
+    const fetchPred = async (image) => {
+        setPred({hello:null})
         const settings = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -32,6 +46,11 @@ const App = () => {
         }    
     
     }
+
+    useEffect(()=>{
+        console.log(loadServer())
+        console.log('Server Ready')
+    }, [])
     
     return (
         <div className={classes.root}>
@@ -41,7 +60,7 @@ const App = () => {
                 <CanvasDraw 
                 hideGrid={true} 
                 hideInterface={true} 
-                brushRadius= {5}
+                brushRadius= {2}
                 canvasWidth= 'min(400px,90vw)'
                 ref = {canvasRef}
                 />
@@ -65,7 +84,14 @@ const App = () => {
                         onClick={predictionButton}>
                         <div className={classes.text}>Get Prediction</div>
                     </motion.button>
-                    <div className={classes.predText}>Most probable digit: {pred.hello}</div>
+                    {pred.hello ? 
+                        <div className={classes.predText}>
+                            Most probable digit: {pred.hello}
+                        </div> : 
+                        <div className={classes.predText}>
+                            <CircularProgress color='secondary'/>
+                        </div>
+                    }
                     
                 </div>
                 <div>As this is hosted with free heroku hosting the speed is very slow and also the model is a very small one. So the results might be bad.</div>
