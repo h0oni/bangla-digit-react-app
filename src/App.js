@@ -3,17 +3,20 @@ import useStyles from './styles'
 import CanvasDraw from "react-canvas-draw";
 import { motion } from "framer-motion"
 import CircularProgress from '@material-ui/core/CircularProgress'
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 const App = () => {
     const classes = useStyles();
     const canvasRef= useRef(null)
     const [pred, setPred] = useState({hello:'--'})
+    const [load, setLoad] = useState(null)
     function predictionButton() {
         const image = canvasRef.current.canvasContainer.childNodes[1].toDataURL()
         fetchPred(image)
     }
 
     function clearButton() {
+        setPred({hello:'--'})
         canvasRef.current.clear()
     }
 
@@ -22,7 +25,7 @@ const App = () => {
             // const fetchResponse = await fetch('http://127.0.0.1:8000/predict/', settings);
             const fetchResponse = await fetch('https://bangladigitfastapi.herokuapp.com/');
             const pred = await fetchResponse.json();
-            return pred.hello
+            setLoad(pred.hello)
         } catch (e) {
             return e;
         }    
@@ -53,14 +56,17 @@ const App = () => {
     }, [])
     
     return (
+        <>{load?<></>:<LinearProgress color="secondary" className={classes.Linear}/>}
         <div className={classes.root}>
+            
             <div className={classes.headText}>Bangla Handwritten Digit</div>
+            
             Draw a Digit below
             <div className={classes.canvasContainer}>
                 <CanvasDraw 
                 hideGrid={true} 
                 hideInterface={true} 
-                brushRadius= {2}
+                brushRadius= {3}
                 canvasWidth= 'min(400px,90vw)'
                 ref = {canvasRef}
                 />
@@ -98,7 +104,7 @@ const App = () => {
                 
                 
             
-        </div>
+        </div></>
     )
 }
 

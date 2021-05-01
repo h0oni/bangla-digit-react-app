@@ -11,6 +11,9 @@ export default makeStyles(() => ({
         marginTop: '-20px'
         // backgroundImage: 'url(https://th.bing.com/th/id/OIP.KBslR72zDojAnucztO7NxAHaEO?pid=ImgDet&rs=1)'
     },
+    Linear:{
+        width: '100vw'
+    },
     canvasContainer: {
         border: '1px solid slategray',
         margin: '3vh',
